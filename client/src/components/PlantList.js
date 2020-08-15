@@ -3,32 +3,32 @@ import axios from "axios";
 
 export default class PlantList extends Component {
   // add state with a property called "plants" - initialize as an empty array
-    constructor(){
-      super();
-      this.state = {
-        plants: [],
-      }
-    }
+  constructor() {
+    super();
+    this.state = {
+      plants: [],
+    };
+  }
   // when the component mounts:
   //   - fetch data from the server endpoint - http://localhost:3333/plants
   //   - set the returned plants array to this.state.plants
 
-  componentDidMount(){
-    console.log("CDM Running")
+  componentDidMount() {
+    console.log("CDM Running");
     axios
       .get(`http://localhost:3333/plants`)
       .then((res) => {
-        this.setState({ plants: res.data })
-        console.log(this.state.plants)
-        console.log(res.plantsData)
-        console.log(res.data)
+        this.setState({ plants: res.data.plantsData });
+        console.log(this.state.plants);
+        console.log(res.plantsData);
+        console.log(res);
       })
-      .catch((err) => console.log(err))
+      .catch((err) => console.log(err));
   }
 
-  componentDidUpdate(prevState, prevProps){
+  componentDidUpdate(prevState, prevProps) {
     if (prevState.plants !== this.state.plants)
-    console.log("Plants have changed!");
+      console.log("Plants have changed!");
   }
 
   /*********  DON'T CHANGE ANYTHING IN THE RENDER FUNCTION *********/

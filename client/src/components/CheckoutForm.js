@@ -15,7 +15,7 @@ const initialValue = {
 // and replace the necessary stateful logic from CheckoutForm with the hook
 
 const CheckoutForm = (props) => {
-  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  // const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   // const [values, setValues] = useState(initialValue);
 
   // const handleChanges = (e) => {
@@ -24,16 +24,16 @@ const CheckoutForm = (props) => {
 
   // const handleSubmit = (e) => {
   //   e.preventDefault();
-  //   setShowSuccessMessage(true);
+    // setShowSuccessMessage(true);
   // };
 
-  const [values, handleSubmit, handleChanges] = useForm(
+  const [values, showSuccessMessage, handleSubmit, handleChanges] = useForm(
     initialValue
   )
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} data-testid="form">
         <h2 data-testid="checkoutHeading">Checkout Form</h2>
         <label>
           First Name:
@@ -75,8 +75,8 @@ const CheckoutForm = (props) => {
       </form>
 
       {showSuccessMessage && (
-        <div className="success-message" data-testid="successMessage">
-          <p>
+        <div className="success-message" >
+          <p data-testid="successMessage">
             You have ordered some plants! Woo-hoo! <span role="img">🎉</span>
           </p>
           <p>Your new green friends will be shipped to:</p>

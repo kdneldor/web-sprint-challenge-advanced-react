@@ -1,11 +1,9 @@
 import { useLocalStorage } from "./useLocalStorage";
+import { useState } from "react";
 
-const useForm = (initialValue, cb) => {
+const useForm = (initialValue) => {
   const [values, setValues] = useLocalStorage("plantData", initialValue);
-  const [showSuccessMessage, setShowSuccessMessage] = useLocalStorage(
-    "success",
-    initialValue
-  );
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false)
   const handleChanges = (e) => {
     setValues({
       ...values,
@@ -18,7 +16,7 @@ const useForm = (initialValue, cb) => {
     setShowSuccessMessage(true);
   };
 
-  return [values, handleSubmit, handleChanges];
+  return [values, showSuccessMessage, handleSubmit, handleChanges];
 };
 
 export default useForm;
