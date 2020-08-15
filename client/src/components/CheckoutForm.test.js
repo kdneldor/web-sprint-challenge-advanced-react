@@ -1,5 +1,5 @@
 import React from "react";
-import { render, fireEvent, getByTestId } from "@testing-library/react";
+import { render, getByTestId } from "@testing-library/react";
 import CheckoutForm from "./CheckoutForm";
 
 
@@ -14,11 +14,10 @@ test("form header renders", () => {
 });
 
 test("form shows success message on submit with form details", () => {
-    const onSubmit = jest.fn();
     
-    const { getByTestId } = render(<form onSubmit={handleSubmit}></form>)
+    const { getByTestId } = render(<CheckoutForm/>)
 
-    fireEvent.submit(getByTestId("form"))
+    const form = getByTestId(/checkout-button/i)
 
-    expect(onSubmit).toHaveBeenCalled();
+    expect(form.textContent).toEqual("Checkout");
 });
