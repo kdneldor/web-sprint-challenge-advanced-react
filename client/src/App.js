@@ -24,7 +24,7 @@ function App() {
   return (
     <div>
       <Router>
-        <nav className="container">
+        <nav className="container" data-testid="checkout-nav">
           <h1>
             React Plants <span role="img">🌿</span>
           </h1>
